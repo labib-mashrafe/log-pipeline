@@ -1,0 +1,23 @@
+The server checked address 173.234.31.186 and flagged it as a possible brake-in.
+Someone from the same address tried the username webmaster from 173.234.31.186
+The server noted again that the username webmaster in invalid. [preauth] means this happened before the login was completed.
+The password-check part of the server ran, but it didn't recognise the user.
+The login failed. rhost= is the address it came from, 173.234.31.186.
+the password was incorrect. The username webmaster tried from 173.234.31.186
+The connection broke before the login was completed from 173.234.31.186
+The connection broke before the login was completed from 212.47.254.145
+Someone from the address 52.80.34.196 tried the username test9.
+The server noted again that the username test9 in invalid. 
+
+Line 2-7 was one person's single attempt. 
+
+LINE TYPES I SAW --
+1. reverse mapping check - has: address, example: line 1
+2. Invalid user - has: username, address, example: line 2, 9
+3. input_userauth_request - has: username, example: line 3, 10
+4. pam check pass - has: nothing useful, example: line 4
+5. pam authentication failure - has: address (rhost=), example: line 5
+6. Failed password - has: username, address, port, example: line 6
+7. Connection closed - has: address, example: line 7, 8
+
+Failed password lines are the best way to count failed logins. Why? -- Every time someone enters a wrong password, the log shows a line starting with "Failed password". Other lines from the same attempt, like "authentication failure" and "Invalid user", also appear, so counting them too would count one attempt several times. "Failed password" appears once per wrong password.
