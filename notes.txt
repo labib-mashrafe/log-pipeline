@@ -1,3 +1,5 @@
+What I learned in Day 2
+
 The server checked address 173.234.31.186 and flagged it as a possible brake-in.
 Someone from the same address tried the username webmaster from 173.234.31.186
 The server noted again that the username webmaster in invalid. [preauth] means this happened before the login was completed.
@@ -21,3 +23,14 @@ LINE TYPES I SAW --
 7. Connection closed - has: address, example: line 7, 8
 
 Failed password lines are the best way to count failed logins. Why? -- Every time someone enters a wrong password, the log shows a line starting with "Failed password". Other lines from the same attempt, like "authentication failure" and "Invalid user", also appear, so counting them too would count one attempt several times. "Failed password" appears once per wrong password.
+
+What I learned in Day 3
+
+1. lines[:50] takes the first 50 lines. A number in square brackets after a colon is a slice.
+2. if "Failed password" in line: keeps only the lines that contain those words.
+3. A counter is count = 0, then count = count + 1 inside the if. The computer counts more reliably than I do by eye. I counted 10 and the real answer was 11.
+4. .split() cuts a line into a list of words. Positions in a list start at 0, not 1.
+5. Bug I found: pieces[12] gave the IP on line 6 but the port on line 29. The IP’s position moves because some lines have the extra words invalid user. A fixed position gives a silent wrong answer, not an error.
+6. Fix: pieces[pieces.index("from") + 1] finds the word from first, then takes the word after it. That works on both line shapes.
+7. A loop with an if and the fix inside it pulls the IP out of every Failed password line.
+8. Data trap: line 30 says message repeated 5 times. It’s one line standing for 5 failures. I decide how to count it when I build the parser.
