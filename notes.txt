@@ -34,3 +34,15 @@ What I learned in Day 3
 6. Fix: pieces[pieces.index("from") + 1] finds the word from first, then takes the word after it. That works on both line shapes.
 7. A loop with an if and the fix inside it pulls the IP out of every Failed password line.
 8. Data trap: line 30 says message repeated 5 times. It’s one line standing for 5 failures. I decide how to count it when I build the parser.
+
+What I learned in Day 4
+
+1. def parse_line(line): makes a function. It takes one log line and gives back something.
+2. return None = "can't parse this line". return {...} = a dictionary (labelled box): {"ip": ..., "user": ...}
+3. result["ip"] reads one entry out of the dictionary.
+4. A function does nothing until I call it. I wrote it, then called it in a loop.
+5. if / elif / else = pick one shape. Each shape sets event = "failed_password" or "invalid_user".
+6. In the dictionary, "event": event is the variable. "event": "failed_password" is fixed text.
+7. I typed fixed text, so every line got the same label and nothing crashed. Wrong data with no error is worse than a crash.
+8. The IP is right after "from", the user is right before it. This works on both line shapes.
+9. One login attempt writes TWO lines (Invalid user, then Failed password) 2 seconds apart. So count Failed password only.
