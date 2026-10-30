@@ -46,3 +46,9 @@ What I learned in Day 4
 7. I typed fixed text, so every line got the same label and nothing crashed. Wrong data with no error is worse than a crash.
 8. The IP is right after "from", the user is right before it. This works on both line shapes.
 9. One login attempt writes TWO lines (Invalid user, then Failed password) 2 seconds apart. So count Failed password only.
+
+what I learned in Day 5
+
+1. (\S+) from (\d+\.\d+\.\d+\.\d+) finds a chunk of non-space characters (the username) sitting right before the word from, then an IP address right after it.
+2. m.group(1) gives me the username and m.group(2) gives me the IP.
+3. I check if m is None because if the line doesn't match the pattern, re.search returns None, and calling group() on None crashes.
