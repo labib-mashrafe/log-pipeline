@@ -13,4 +13,8 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 
 ## Status
 
-Week 1: in progress.
+## Week 1: what works so far
+- Reads the OpenSSH log and parses two line types (Failed password, Invalid user) with a regex
+- Pulls out timestamp, IP, username and event type
+- Tested on the first 50 lines only. Not run on the full 2000 lines yet
+- Not built yet: database, detector
