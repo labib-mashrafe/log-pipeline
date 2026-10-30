@@ -28,3 +28,12 @@ for line in lines[:50]:
     if "Failed password" in line:
         pieces = line.split()
         print(pieces[pieces.index("from") + 1])
+
+import re
+
+line = "Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2"
+m = re.search(r"from (\d+\.\d+\.\d+\.\d+)", line)
+print(m.group(1))
+
+m2 = re.search(r"(\S+) from (\d+\.\d+\.\d+\.\d+)", line)
+print(m2.group(1), m2.group(2))

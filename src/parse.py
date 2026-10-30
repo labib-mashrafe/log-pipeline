@@ -1,3 +1,5 @@
+import re
+
 def parse_line(line):
     if "Failed password" in line:
         event = "failed_password"
@@ -5,11 +7,12 @@ def parse_line(line):
         event = "invalid_user"
     else:
         return None      
+    m = re.search(r"(\S+) from (\d+\.\d+\.\d+\.\d+)", line)
+    if m is None:
+        return None
     pieces = line.split()
     ts = " ".join(pieces[0:3])
-    ip = pieces[pieces.index("from") + 1]
-    user = pieces[pieces.index("from") - 1]
-    return {"ts": ts, "ip": ip, "user": user, "event": event, "raw": line.strip()}
+    return {"ts": ts, "ip": m.group(2), "user": m.group(1), "event": event, "raw": line.strip()}
 
 with open("data/OpenSSH_2k.log") as f:
     lines = f.readlines()
