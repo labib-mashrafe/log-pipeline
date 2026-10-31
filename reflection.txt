@@ -1,0 +1,3 @@
+Enjoyed: Day 2, when I went through 10 log lines and understood what each one meant. Day 4, splitting the lines to find what I needed. Day 6, counting parsed and rejected and checking they add up to 2000. I like figuring out what the data actually says.
+
+Annoyed: not knowing what to do next, and typos in commands (gid add, gut push). Next time: read the last line of an error first, and check the command before I press Enter.

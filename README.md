@@ -11,10 +11,9 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - Citation 1: Jieming Zhu, Shilin He, Pinjia He, Jinyang Liu, Michael R. Lyu. "Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics". IEEE ISSRE, 2023.
 - Citation 2: Zhihan Jiang, Jinyang Liu, Junjie Huang, Yichen Li, Yintong Huo, Jiazhen Gu, Zhuangbin Chen, Jieming Zhu, Michael R. Lyu. "A Large-scale Evaluation for Log Parsing Techniques: How Far are We?". ACM ISSTA, 2024.
 
-## Status
 
 ## Week 1: what works so far
 - Reads the OpenSSH log and parses two line types (Failed password, Invalid user) with a regex
 - Pulls out timestamp, IP, username and event type
-- Tested on the first 50 lines only. Not run on the full 2000 lines yet
+- Run on all 2000 lines: 633 parsed, 1367 rejected (other line types, saved to data/rejected.txt)
 - Not built yet: database, detector
