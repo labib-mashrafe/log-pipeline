@@ -59,3 +59,9 @@ what I learned in Day 6
 2. “Rejected” doesn’t mean broken. The log has many line types, and the parser only wants two. I looked at what was rejected instead of assuming.
 3. I checked the rejected file with Ctrl+F for “Failed password”. No results meant the parser didn’t miss anything it should have caught.
 4. The lowercase invalid user lines are copies of the same event, so rejecting them avoids double-counting.
+
+Day 7
+1. The if __name__ == "__main__" line: without it, importing parse.py would run its top-level parsing code automatically when imported.
+2. The ? in the INSERT line: it's there because it safely holds a place for the value being inserted, rather than mixing that value directly into the SQL code.
+3. GROUP BY ip: puts all rows with the same IP together, so COUNT(*) counts failed logins per IP instead of one total.
+4. What the query showed: the top IP had 286 failed logins and the second had 80, which looks like a possible brute-force attack.
