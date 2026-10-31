@@ -47,21 +47,31 @@ What I learned in Day 4
 8. The IP is right after "from", the user is right before it. This works on both line shapes.
 9. One login attempt writes TWO lines (Invalid user, then Failed password) 2 seconds apart. So count Failed password only.
 
-what I learned in Day 5
+What I learned in Day 5
 
 1. (\S+) from (\d+\.\d+\.\d+\.\d+) finds a chunk of non-space characters (the username) sitting right before the word from, then an IP address right after it.
 2. m.group(1) gives me the username and m.group(2) gives me the IP.
 3. I check if m is None because if the line doesn't match the pattern, re.search returns None, and calling group() on None crashes.
 
-what I learned in Day 6
+What I learned in Day 6
 
 1. A count that adds up is a check. 633 + 1367 = 2000, and it matched the number I worked out separately. If the sum had been off, something would be wrong.
 2. “Rejected” doesn’t mean broken. The log has many line types, and the parser only wants two. I looked at what was rejected instead of assuming.
 3. I checked the rejected file with Ctrl+F for “Failed password”. No results meant the parser didn’t miss anything it should have caught.
 4. The lowercase invalid user lines are copies of the same event, so rejecting them avoids double-counting.
 
-Day 7
+What I learned in Day 7
+
 1. The if __name__ == "__main__" line: without it, importing parse.py would run its top-level parsing code automatically when imported.
 2. The ? in the INSERT line: it's there because it safely holds a place for the value being inserted, rather than mixing that value directly into the SQL code.
 3. GROUP BY ip: puts all rows with the same IP together, so COUNT(*) counts failed logins per IP instead of one total.
 4. What the query showed: the top IP had 286 failed logins and the second had 80, which looks like a possible brute-force attack.
+
+What I learned in Day 8
+
+1. HAVING vs WHERE: WHERE filters rows before they are grouped, HAVING filters the groups after the counting.
+2. My threshold was 20 failed logins, and it flagged 4 IPs.
+3. MIN(ts) and MAX(ts) gave me earliest and latest timestamp for each IP.
+4. 112.95.230.3 made 26 attempts in 59 seconds, which means about one attempt every 2 seconds on average.
+5. 103.99.0.122 made 46 attempts over about 2 hours, so it might be a human or a slow bot.
+6. Count alone has two blind spots: A fast burst under the threshold slips through, but a slow spread over the threshold gets flagged by mistake.
