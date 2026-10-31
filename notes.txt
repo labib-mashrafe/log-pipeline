@@ -52,3 +52,10 @@ what I learned in Day 5
 1. (\S+) from (\d+\.\d+\.\d+\.\d+) finds a chunk of non-space characters (the username) sitting right before the word from, then an IP address right after it.
 2. m.group(1) gives me the username and m.group(2) gives me the IP.
 3. I check if m is None because if the line doesn't match the pattern, re.search returns None, and calling group() on None crashes.
+
+what I learned in Day 6
+
+1. A count that adds up is a check. 633 + 1367 = 2000, and it matched the number I worked out separately. If the sum had been off, something would be wrong.
+2. “Rejected” doesn’t mean broken. The log has many line types, and the parser only wants two. I looked at what was rejected instead of assuming.
+3. I checked the rejected file with Ctrl+F for “Failed password”. No results meant the parser didn’t miss anything it should have caught.
+4. The lowercase invalid user lines are copies of the same event, so rejecting them avoids double-counting.

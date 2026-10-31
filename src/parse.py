@@ -16,7 +16,18 @@ def parse_line(line):
 
 with open("data/OpenSSH_2k.log") as f:
     lines = f.readlines()
-for line in lines[:50]:
+
+parsed = 0
+rejected = 0
+rejected_lines = []
+for line in lines:
     result = parse_line(line)
-    if result is not None:
-        print(result["ts"], result["ip"], result["user"], result["event"])
+    if result is None:
+        rejected = rejected + 1
+        rejected_lines.append(line)
+    else:
+        parsed = parsed + 1
+print("parsed:", parsed, "rejected:", rejected)
+with open("data/rejected.txt", "w") as out:
+    for line in rejected_lines:
+        out.write(line)
