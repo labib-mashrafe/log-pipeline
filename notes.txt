@@ -75,3 +75,11 @@ What I learned in Day 8
 4. 112.95.230.3 made 26 attempts in 59 seconds, which means about one attempt every 2 seconds on average.
 5. 103.99.0.122 made 46 attempts over about 2 hours, so it might be a human or a slow bot.
 6. Count alone has two blind spots: A fast burst under the threshold slips through, but a slow spread over the threshold gets flagged by mistake.
+
+What I learned in Day 9
+
+1. The check I added: it looks through the rejected lines for “Failed password” and “Invalid user”. If it finds any, it counts them. Only when the count is above 0 does it print the error and stop.
+2. Normal run result: parsed 633, rejected 1367, important lines rejected 0.
+3. I broke the regex on purpose (an extra space after "from"). The check said 633 important lines were rejected, and it also said parsed 0 and rejected 2000. And then it printed the ERROR and stopped.
+4. Why test a check by breaking things: A check that has never failed might be broken somehow, so I broke the regex on purpose with an extra space and saw it catch all 633 lines.
+5. Why 1367 rejected is OK but 633 important rejected would not be: The rejected lines are fine because the parser wasn’t meant to handle them, but if important lines were rejected, that would’ve silently miss real attacks.

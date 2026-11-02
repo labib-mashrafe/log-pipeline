@@ -6,7 +6,7 @@ def parse_line(line):
     elif "Invalid user" in line:
         event = "invalid_user"
     else:
-        return None      
+        return None
     m = re.search(r"(\S+) from (\d+\.\d+\.\d+\.\d+)", line)
     if m is None:
         return None
@@ -32,3 +32,12 @@ if __name__ == "__main__":
     with open("data/rejected.txt", "w") as out:
         for line in rejected_lines:
             out.write(line)
+
+    missed = 0
+    for line in rejected_lines:
+        if "Failed password" in line or "Invalid user" in line:
+            missed = missed + 1
+    print("important lines rejected:", missed)
+    if missed > 0:
+        print("ERROR: parser rejected", missed, "important lines. Look in data/rejected.txt")
+        raise SystemExit(1)
