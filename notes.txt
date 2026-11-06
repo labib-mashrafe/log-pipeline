@@ -105,3 +105,8 @@ What I learned in Day 12
 3. The inserted count in db.py is misleading because count = count + 1 runs every time the code tries to insert a row, not only when a new row is actually added. INSERT OR IGNORE skips duplicate rows, but Python still increments count, so the second run printed inserted 633 even though no new rows were inserted.
 4. I proved the protection works by deleting the two words OR IGNORE from the INSERT line and running db.py again, and I saw sqlite3.IntegrityError: UNIQUE constraint failed: events.source_file, events.line_number.
 
+What I learned in Day 13
+
+1. I wrapped the loading code in a function, load(log_file, db_file), so a test can pass in its own temporary database file, tmp_path / "test.db", as db_file. The if __name__ guard means importing db.py no longer automatically loads the log and writes to the real events.db.
+2. tmp_path is useful in a test because it creates a separate temporary directory for the test, so test.db is throwaway and the real events.db is never overwritten, or polluted.
+3. A test that has never failed has not demonstrated that it can catch the bug it is meant to detect. I broke the loader by deleting OR IGNORE, and the test failed on the second load with sqlite3.IntegrityError because it tried to insert rows that violated the UNIQUE(source_file, line_number) constraint.
