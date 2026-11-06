@@ -85,7 +85,15 @@ What I learned in Day 9
 5. Why 1367 rejected is OK but 633 important rejected would not be: The rejected lines are fine because the parser wasn’t meant to handle them, but if important lines were rejected, that would’ve silently miss real attacks.
 
 What I learned in Day 10
+
 1. MONTHS is a dictionary that turns "Dec" into 12.
 2. I use zfill(2) because it adds a 0. So “5” becomes “05”. Computers sort text one character at a time, left to right, and stop at the first difference. If we compare 2025-12-5 and 2025-12-10, the first 8 characters are identical. But computer puts 2025-12-10 before 2025-12-5 as “1” comes before “5”, which is wrong because Dec 10 is later. So if zfill(2) isn’t used, it causes wrong results.
 3. I had to run db.py again because the table still had old timestamps (Dec 10 06:55:46), and db.py deletes them and replaces with the new format.
 4. With "Dec 10", text sorting puts months in alphabetical order, so Dec looks earlier than Nov. With YYYY-MM-DD, the year comes first and the month is a number, so sorting as text gives the correct order.
+
+hat I learned in Day 11
+
+1. A dictionary counter works like this: if the key is already in the dictionary, it adds 1 to its tally. If not, it adds it with a tally of 1.
+2. I checked the counts two ways: Firstly, adding up the tallies when I printed sum(counts.values()) and got 520, the same as the number of Failed password lines. Secondly, counting by hand in VS code when I pressed Ctrl+F with a regex search. I checked 3 IP’s, 112.95.230.3, 187.141.143.180 and 5.188.10.180. It produced 26, 80 and 18.
+3. ts[11:13] gives the hour because positions 11 and 12 hold the two hour digits, and the slice stops before position 13.
+4. Per-hour counts hide the speed of the attempts, because they only show the total number of attempts during that hour.
