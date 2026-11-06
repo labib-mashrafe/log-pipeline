@@ -11,6 +11,10 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - Citation 1: Jieming Zhu, Shilin He, Pinjia He, Jinyang Liu, Michael R. Lyu. "Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics". IEEE ISSRE, 2023.
 - Citation 2: Zhihan Jiang, Jinyang Liu, Junjie Huang, Yichen Li, Yintong Huo, Jiazhen Gu, Zhuangbin Chen, Jieming Zhu, Michael R. Lyu. "A Large-scale Evaluation for Log Parsing Techniques: How Far are We?". ACM ISSTA, 2024.
 
+## Known limits
+- The log has no year, so I guessed 2025 in the constant ASSUMED_YEAR at the top of src/parse.py
+- The server timezone is unknown, so I can't compare these times with times from another server.
+- The data covers one day only, 10 Dec from 06:55 to 11:04.
 
 ## Week 1: what works so far
 - Reads the OpenSSH log and parses two line types (Failed password, Invalid user) with a regex

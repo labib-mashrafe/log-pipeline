@@ -1,5 +1,10 @@
 import re
 
+ASSUMED_YEAR = 2025
+MONTHS = {"Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, 
+          "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12}
+
+
 def parse_line(line):
     if "Failed password" in line:
         event = "failed_password"
@@ -11,7 +16,9 @@ def parse_line(line):
     if m is None:
         return None
     pieces = line.split()
-    ts = " ".join(pieces[0:3])
+    month = MONTHS[pieces[0]]
+    day = int(pieces[1])
+    ts = str(ASSUMED_YEAR) + "-" + str(month).zfill(2) + "-" + str(day).zfill(2) + " " + pieces[2]
     return {"ts": ts, "ip": m.group(2), "user": m.group(1), "event": event, "raw": line.strip()}
 
 if __name__ == "__main__":
@@ -41,3 +48,5 @@ if __name__ == "__main__":
     if missed > 0:
         print("ERROR: parser rejected", missed, "important lines. Look in data/rejected.txt")
         raise SystemExit(1)
+
+    

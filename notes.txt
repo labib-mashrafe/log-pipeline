@@ -83,3 +83,9 @@ What I learned in Day 9
 3. I broke the regex on purpose (an extra space after "from"). The check said 633 important lines were rejected, and it also said parsed 0 and rejected 2000. And then it printed the ERROR and stopped.
 4. Why test a check by breaking things: A check that has never failed might be broken somehow, so I broke the regex on purpose with an extra space and saw it catch all 633 lines.
 5. Why 1367 rejected is OK but 633 important rejected would not be: The rejected lines are fine because the parser wasn’t meant to handle them, but if important lines were rejected, that would’ve silently miss real attacks.
+
+What I learned in Day 10
+1. MONTHS is a dictionary that turns "Dec" into 12.
+2. I use zfill(2) because it adds a 0. So “5” becomes “05”. Computers sort text one character at a time, left to right, and stop at the first difference. If we compare 2025-12-5 and 2025-12-10, the first 8 characters are identical. But computer puts 2025-12-10 before 2025-12-5 as “1” comes before “5”, which is wrong because Dec 10 is later. So if zfill(2) isn’t used, it causes wrong results.
+3. I had to run db.py again because the table still had old timestamps (Dec 10 06:55:46), and db.py deletes them and replaces with the new format.
+4. With "Dec 10", text sorting puts months in alphabetical order, so Dec looks earlier than Nov. With YYYY-MM-DD, the year comes first and the month is a number, so sorting as text gives the correct order.
