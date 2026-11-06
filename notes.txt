@@ -91,9 +91,17 @@ What I learned in Day 10
 3. I had to run db.py again because the table still had old timestamps (Dec 10 06:55:46), and db.py deletes them and replaces with the new format.
 4. With "Dec 10", text sorting puts months in alphabetical order, so Dec looks earlier than Nov. With YYYY-MM-DD, the year comes first and the month is a number, so sorting as text gives the correct order.
 
-hat I learned in Day 11
+What I learned in Day 11
 
 1. A dictionary counter works like this: if the key is already in the dictionary, it adds 1 to its tally. If not, it adds it with a tally of 1.
 2. I checked the counts two ways: Firstly, adding up the tallies when I printed sum(counts.values()) and got 520, the same as the number of Failed password lines. Secondly, counting by hand in VS code when I pressed Ctrl+F with a regex search. I checked 3 IP’s, 112.95.230.3, 187.141.143.180 and 5.188.10.180. It produced 26, 80 and 18.
 3. ts[11:13] gives the hour because positions 11 and 12 hold the two hour digits, and the slice stops before position 13.
 4. Per-hour counts hide the speed of the attempts, because they only show the total number of attempts during that hour.
+
+What I learned in Day 12
+
+1. UNIQUE constraint failed means the database refused a row because same file name and the same line number was already in the table. OR IGNORE changes it so that it silently ignores the lines that were already in there instead of crashing.
+2. The unique key is source_file and line_number together, because the same file name and the same line number point to one specific log line.
+3. The inserted count in db.py is misleading because count = count + 1 runs every time the code tries to insert a row, not only when a new row is actually added. INSERT OR IGNORE skips duplicate rows, but Python still increments count, so the second run printed inserted 633 even though no new rows were inserted.
+4. I proved the protection works by deleting the two words OR IGNORE from the INSERT line and running db.py again, and I saw sqlite3.IntegrityError: UNIQUE constraint failed: events.source_file, events.line_number.
+
