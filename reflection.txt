@@ -1,3 +1,8 @@
-Enjoyed: Day 2, when I went through 10 log lines and understood what each one meant. Day 4, splitting the lines to find what I needed. Day 6, counting parsed and rejected and checking they add up to 2000. I like figuring out what the data actually says.
+Week 1:
+- Enjoyed: Day 2, when I went through 10 log lines and understood what each one meant. Day 4, splitting the lines to find what I needed. Day 6, counting parsed and rejected and checking they add up to 2000. I like figuring out what the data actually says.
+- Annoyed: not knowing what to do next, and typos in commands (gid add, gut push). Next time: read the last line of an error first, and check the command before I press Enter.
 
-Annoyed: not knowing what to do next, and typos in commands (gid add, gut push). Next time: read the last line of an error first, and check the command before I press Enter.
+Week 2:
+- The hardest part of this week was Day 13, because the loader part was a little bit difficult for me to understand at first. Day 12 also took the longest time to finish, because I made too many mistakes while writing the code.
+- The thing I'm proudest of is converting the timestamps to YYYY-MM-DD, because at first I was doing just fine, and then when I understood what zfill does, it became more interesting.
+- Next week I will do one small step of the project each day, for no more than 1 hour, and commit before I stop, so there is never a day with no commit.
