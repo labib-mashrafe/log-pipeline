@@ -117,3 +117,10 @@ What I learned in Day 14
 2. In run_sql.py, sys.argv[1] is the word after the script name, so I can run any SQL file with the command python src/run_sql.py <path to a .sql file>.
 3. The first run printed nothing because I accidentally wrote “failled_password” instead of “failed_password”. SQL gave no error because SQL doesn’t know that a text value is wrong. It simply compares  event  against that exact string and returns matching rows. And when it couldn’t find the exact text, it returned zero rows.
 4. I checked the SQL result against counts.py, and the hourly counts matched exactly, with both totalling 520.
+
+What I learned in Day 15
+
+1. Test 2 checks that two lines that look identical but sit at different line numbers are both kept, because a loader that throws away repeats would silently lose attacks.
+2. I broke the key by changing it to UNIQUE(source_file, ts), and both tests failed: Test 1 showed 597 instead of 633, and Test 2 showed 1 instead of 2.
+3. The key must include the line number because different log lines in the same file can have the same timestamp, and using the timestamp instead would cause distinct events to be treated as duplicates and skipped.
+4. log_file.write_text(line + line) makes a log file with two identical log lines, so the test doesn't depend on the real OpenSSH_2k.log file.
