@@ -131,3 +131,10 @@ What I learned in Day 16
 2. 183.62.140.253 shows 157 and 129, not 286, because GROUP BY ip, hour creates group for each IP and hour. The same IP in hour 10 and in hour 11 makes two separate groups.
 3. Thresholds from 8 to 16 all flag 8 IP-hours, so I choose 10. It is 3 above the 7 and 6 below the 16, so small changes in the data won't flip the result.
 4. I added up all the failures in the output and compared the sum with the 520 from counts.py.
+
+What I learned in Day 17
+
+1. THRESHOLD is a named constant so the value lives in one place. Changing it from 10 to 12 requires one edit instead of hunting through five places, risking a missed occurrence and inconsistent thresholds.
+2. I hand-checked 5.188.10.180 in hour 08 with findstr and got 18 failed passwords, which matched the query.
+3. One failed login makes several log lines (Invalid user, pam_unix, Failed password), so I count only "Failed password" to avoid counting an attempt more than once. "Failed none" lines are not counted.
+4. An hourly threshold can miss an attack that crosses an hour boundary, so the next detector should count failures in a sliding window instead.
