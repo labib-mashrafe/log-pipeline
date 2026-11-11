@@ -124,3 +124,10 @@ What I learned in Day 15
 2. I broke the key by changing it to UNIQUE(source_file, ts), and both tests failed: Test 1 showed 597 instead of 633, and Test 2 showed 1 instead of 2.
 3. The key must include the line number because different log lines in the same file can have the same timestamp, and using the timestamp instead would cause distinct events to be treated as duplicates and skipped.
 4. log_file.write_text(line + line) makes a log file with two identical log lines, so the test doesn't depend on the real OpenSSH_2k.log file.
+
+What I learned in Day 16
+
+1. When SQLite says "near X: syntax error", the mistake is usually just before the word X.
+2. 183.62.140.253 shows 157 and 129, not 286, because GROUP BY ip, hour creates group for each IP and hour. The same IP in hour 10 and in hour 11 makes two separate groups.
+3. Thresholds from 8 to 16 all flag 8 IP-hours, so I choose 10. It is 3 above the 7 and 6 below the 16, so small changes in the data won't flip the result.
+4. I added up all the failures in the output and compared the sum with the 520 from counts.py.
