@@ -138,3 +138,10 @@ What I learned in Day 17
 2. I hand-checked 5.188.10.180 in hour 08 with findstr and got 18 failed passwords, which matched the query.
 3. One failed login makes several log lines (Invalid user, pam_unix, Failed password), so I count only "Failed password" to avoid counting an attempt more than once. "Failed none" lines are not counted.
 4. An hourly threshold can miss an attack that crosses an hour boundary, so the next detector should count failures in a sliding window instead.
+
+What I learned in Day 18
+
+1. COUNT(DISTINCT user) counts different usernames targeted by each IP, which is different from COUNT(*) because for 183.62.140.253 it gives 10 while COUNT(*) gives 286, since repeated failures against the same username count once in COUNT(DISTINCT user) but separately in COUNT(*).
+2. 187.141.143.180 tried 28 usernames, about 2.86 times each, which suggests searching for which usernames exist.
+3. 183.62.140.253 tried 10 usernames, about 28.6 times each, which suggests guessing passwords for a few chosen accounts.
+4. Counting only failures per IP misses whether the attempts target one username repeatedly or many different usernames, so a detector should also look at the number of distinct usernames targeted by each IP.
