@@ -145,3 +145,8 @@ What I learned in Day 18
 2. 187.141.143.180 tried 28 usernames, about 2.86 times each, which suggests searching for which usernames exist.
 3. 183.62.140.253 tried 10 usernames, about 28.6 times each, which suggests guessing passwords for a few chosen accounts.
 4. Counting only failures per IP misses whether the attempts target one username repeatedly or many different usernames, so a detector should also look at the number of distinct usernames targeted by each IP.
+
+What I learned in Day 19
+
+1. I wrote ORDER BY user instead of users. It ran without an error because user is an existing column. That sorted the groups using an arbitrary username from each IP’s group instead of the distinct-user count named users.
+2. detect.py puts both queries in functions so I can run and test each query separately without running the whole script. report.py can import and reuse them, and the if __name__ guard keeps the printing from running on import.

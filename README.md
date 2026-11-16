@@ -29,7 +29,8 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - A pytest test loads the log twice and checks that the events table still contains exactly 633 rows.
 
 ## Week 3: what works so far
-- Burst threshold: 10 failed passwords from one IP in one hour (THRESHOLD in src/burst.py). The highest IP-hour below it has 7 failures and the lowest flagged one has 16, so small data changes won't flip the result.
+- Burst threshold: 10 failed passwords from one IP in one hour (THRESHOLD in src/detect.py). The highest IP-hour below it has 7 failures and the lowest flagged one has 16, so small data changes won't flip the result.
 - Limit: an attack of 16 failures split 8 and 8 across an hour boundary is missed, though its total exceeds 10.
 - Checked by hand: 5.188.10.180 in hour 08 has 18 failed passwords with findstr, same as the query.
-- Run it with: python src/burst.py
+- Run it with: python src/detect.py
+- Distinct usernames per IP: 187.141.143.180 tried 28 usernames about 2.86 times each, while 183.62.140.253 tried 10 usernames about 28.6 times each. Counting failures alone hides the difference between trying many usernames and repeatedly targeting a smaller set.
