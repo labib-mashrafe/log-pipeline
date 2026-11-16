@@ -150,3 +150,10 @@ What I learned in Day 19
 
 1. I wrote ORDER BY user instead of users. It ran without an error because user is an existing column. That sorted the groups using an arbitrary username from each IP’s group instead of the distinct-user count named users.
 2. detect.py puts both queries in functions so I can run and test each query separately without running the whole script. report.py can import and reuse them, and the if __name__ guard keeps the printing from running on import.
+
+What I learned in Day 20
+
+1. The report printed "failures 1" for every row because “failures” variable from an earlier loop survived, and the typo “failured” made the print use it instead of the new one.
+2. Python didn't crash because the earlier loop had a variable "failures" with the same name, still alive afterwards.
+3. Next time I'll avoid this by using _ for values I don’t use, or check the output against a known number.
+4. In "for ip, count, _ in users", the _ stands for the third value in each row, which I don’t use, so a mistyped name would crash instead of silently printing a wrong number.
