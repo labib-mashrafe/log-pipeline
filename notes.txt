@@ -157,3 +157,4 @@ What I learned in Day 20
 2. Python didn't crash because the earlier loop had a variable "failures" with the same name, still alive afterwards.
 3. Next time I'll avoid this by using _ for values I don’t use, or check the output against a known number.
 4. In "for ip, count, _ in users", the _ stands for the third value in each row, which I don’t use, so a mistyped name would crash instead of silently printing a wrong number.
+5. totals(conn)  must come before  conn.close()  because it needs an open connection to query the database. If I get the order wrong, Python would crash with sqlite3.ProgrammingError: Cannot operate on a closed database.
