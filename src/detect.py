@@ -17,6 +17,13 @@ def username_rows(conn):
         "GROUP BY ip ORDER BY users DESC",
     ).fetchall()
 
+def totals(conn):
+    events = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
+    failed = conn.execute(
+        "SELECT COUNT(*) FROM events WHERE event = 'failed_password'"
+    ).fetchone()[0]
+    return events, failed
+
 if __name__ == "__main__":
     conn = sqlite3.connect("data/events.db")
     print("BURSTS, threshold", THRESHOLD)
