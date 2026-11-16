@@ -6,3 +6,9 @@ Week 2:
 - The hardest part of this week was Day 13, because the loader part was a little bit difficult for me to understand at first. Day 12 also took the longest time to finish, because I made too many mistakes while writing the code.
 - The thing I'm proudest of is converting the timestamps to YYYY-MM-DD, because at first I was doing just fine, and then when I understood what zfill does, it became more interesting.
 - Next week I will do one small step of the project each day, for no more than 1 hour, and commit before I stop, so there is never a day with no commit.
+
+Week 3:
+- The hardest thing this week was Day 16 because I had a hard time selecting the perfect threshold. Turns out there’s no perfect threshold. I had to pick only a stable zone (8 to 16) where the answer doesn't change.
+- The thing I'm proudest of is Day 18 because it was all about comparing data. The two IPs did not look the same by failure count. They had 80 and 286, which is a big difference. What they had in common was that both were top attackers. What the username count showed was that they behaved differently.
+- A mistake I made that I'd catch faster next time: typos that ran with no error (failled_password, ORDER BY user). I caught them with a sum of 520, a first row I expected, and a count I predicted.
+- Next week I will do one small step a day, no more than 1 hour, and commit before I stop. If I miss a day, I skip it and use a buffer day instead of doing two days of work in one.
