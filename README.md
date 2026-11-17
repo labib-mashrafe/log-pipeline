@@ -10,6 +10,7 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - Terms (quoted from the Loghub README): "The datasets are freely available for research or academic work. For any usage or distribution of the datasets, please refer to the loghub repository URL https://github.com/logpai/loghub and cite the loghub paper where applicable."
 - Citation 1: Jieming Zhu, Shilin He, Pinjia He, Jinyang Liu, Michael R. Lyu. "Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics". IEEE ISSRE, 2023.
 - Citation 2: Zhihan Jiang, Jinyang Liu, Junjie Huang, Yichen Li, Yintong Huo, Jiazhen Gu, Zhuangbin Chen, Jieming Zhu, Michael R. Lyu. "A Large-scale Evaluation for Log Parsing Techniques: How Far are We?". ACM ISSTA, 2024.
+- Licence: MIT (my code only, see the LICENSE file). The log data has its own terms, quoted above.
 
 ## Known limits
 - The log has no year, so I guessed 2025 in the constant ASSUMED_YEAR at the top of src/parse.py.
