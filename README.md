@@ -15,6 +15,9 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - The log has no year, so I guessed 2025 in the constant ASSUMED_YEAR at the top of src/parse.py.
 - The server timezone is unknown, so I can't compare these times with times from another server.
 - The data covers one day only, 10 Dec from 06:55 to 11:04.
+- The parser counts only "Failed password" and "Invalid user" lines. Lines like "Failed none" are skipped.
+- 1367 of 2000 lines are not parsed because they are other event types, such as pam_unix(sshd:auth): authentication failure and Did not receive identification string. They are saved to data/rejected.txt.
+- The username count per IP covers the whole log, not a single hour, so it can't show when an attacker changed usernames.
 
 ## Week 1: what works so far
 - Reads the OpenSSH log and parses two line types (Failed password, Invalid user) with a regex.
