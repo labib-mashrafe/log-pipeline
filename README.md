@@ -20,7 +20,6 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - Reads the OpenSSH log and parses two line types (Failed password, Invalid user) with a regex.
 - Pulls out timestamp, IP, username and event type.
 - Run on all 2000 lines: 633 parsed, 1367 rejected (other line types, saved to data/rejected.txt).
-- Not built yet: detector
 
 ## Week 2: what works so far
 - Timestamps are converted to YYYY-MM-DD HH:MM:SS format, with the year assumed as 2025.
@@ -37,6 +36,7 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 
 ## How to run
 Run all commands from the log-pipeline folder.
+0. Create a folder named `data` first (on Windows: `mkdir data`), then download the log (see the Data section above) and save it as data/OpenSSH_2k.log
 1. Load the log into the database: python src/db.py
 2. Print the report: python src/report.py
 3. Run the tests (install pytest once first with: pip install pytest): python -m pytest
