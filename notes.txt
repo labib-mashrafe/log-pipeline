@@ -158,3 +158,9 @@ What I learned in Day 20
 3. Next time I'll avoid this by using _ for values I don’t use, or check the output against a known number.
 4. In "for ip, count, _ in users", the _ stands for the third value in each row, which I don’t use, so a mistyped name would crash instead of silently printing a wrong number.
 5. totals(conn)  must come before  conn.close()  because it needs an open connection to query the database. If I get the order wrong, Python would crash with sqlite3.ProgrammingError: Cannot operate on a closed database.
+
+What I learned in Day 21
+
+1. Step 0 in "How to run" is needed because data/ is in .gitignore, so without step 0 the load command (python src/db.py) fails.
+2. The README said "Not built yet: detector", which was written in Week 1 and became false in Week 3, when I built the detector but didn’t update the README.
+3. I wrote the Known limits from what I saw in the findstr output, data/rejected.txt, the report labels, not from what I assumed.
