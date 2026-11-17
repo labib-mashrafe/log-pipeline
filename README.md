@@ -34,3 +34,9 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 - Checked by hand: 5.188.10.180 in hour 08 has 18 failed passwords with findstr, same as the query.
 - Run it with: python src/detect.py
 - Distinct usernames per IP: 187.141.143.180 tried 28 usernames about 2.86 times each, while 183.62.140.253 tried 10 usernames about 28.6 times each. Counting failures alone hides the difference between trying many usernames and repeatedly targeting a smaller set.
+
+## How to run
+Run all commands from the log-pipeline folder.
+1. Load the log into the database: python src/db.py
+2. Print the report: python src/report.py
+3. Run the tests (install pytest once first with: pip install pytest): python -m pytest
