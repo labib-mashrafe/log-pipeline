@@ -164,3 +164,11 @@ What I learned in Day 21
 1. Step 0 in "How to run" is needed because data/ is in .gitignore, so without step 0 the load command (python src/db.py) fails.
 2. The README said "Not built yet: detector", which was written in Week 1 and became false in Week 3, when I built the detector but didn’t update the README.
 3. I wrote the Known limits from what I saw in the findstr output, data/rejected.txt, the report labels, not from what I assumed.
+
+What I learned in Day 22
+
+1. A fresh clone has no data folder (.gitignore skips it). Step 0 only said "download the log" and gave no command, so I added curl.exe.
+2. My first download used a wrong URL and saved a 14-byte "404: Not Found" file as the log. The flag -f makes curl stop with an error instead.
+3. In PowerShell, plain curl is not the real curl, so the README uses curl.exe instead. I tested it in PowerShell and the file came back at 225216 bytes.
+4. The fresh clone test passed (2 passed), but I did not test pip install pytest because pytest was already installed on my machine.
+5. My own project folder hid the missing download command because I had already downloaded the log by hand, so only a fresh folder showed the problem.
