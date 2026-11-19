@@ -172,3 +172,9 @@ What I learned in Day 22
 3. In PowerShell, plain curl is not the real curl, so the README uses curl.exe instead. I tested it in PowerShell and the file came back at 225216 bytes.
 4. The fresh clone test passed (2 passed), but I did not test pip install pytest because pytest was already installed on my machine.
 5. My own project folder hid the missing download command because I had already downloaded the log by hand, so only a fresh folder showed the problem.
+
+What I learned in Day 23
+
+1. burst.py had its own copy of THRESHOLD and of the burst query. If I changed the number in only one file, burst.py and report.py would disagree about which IPs are flagged.
+2. Before deleting, I searched with findstr and no .md, .txt or .py file mentioned burst.py. After deleting it, report.py still printed 8 flagged IP-hours, 633 events and 520 failed passwords.
+3. I used git rm instead of del because the deleted file stays in git history, so I can get it back if I was wrong.
