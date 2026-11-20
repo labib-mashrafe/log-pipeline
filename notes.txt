@@ -178,3 +178,9 @@ What I learned in Day 23
 1. burst.py had its own copy of THRESHOLD and of the burst query. If I changed the number in only one file, burst.py and report.py would disagree about which IPs are flagged.
 2. Before deleting, I searched with findstr and no .md, .txt or .py file mentioned burst.py. After deleting it, report.py still printed 8 flagged IP-hours, 633 events and 520 failed passwords.
 3. I used git rm instead of del because the deleted file stays in git history, so I can get it back if I was wrong.
+
+What I learned in Day 24
+
+1. db.py printed "inserted 633" on every run, because it added 1 for every row it tried, even when INSERT OR IGNORE skipped it. I changed it to add cur.rowcount, which is 1 for a real insert and 0 for a skipped row.
+2. I deleted events.db and ran db.py twice. The first run printed "inserted 633" and the second printed "inserted 0". The tests still gave 2 passed.
+3. Running db.py a second time now prints "inserted 0". That is correct, because rows are already in the database and INSERT OR IGNORE skips them.

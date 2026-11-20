@@ -15,7 +15,7 @@ A small Python and SQLite project that parses an SSH server log and flags suspic
 ## How to run
 Run all commands from the log-pipeline folder.
 0. Create a folder named `data` first (on Windows: `mkdir data`), then run: curl.exe -f -L -o data\OpenSSH_2k.log https://raw.githubusercontent.com/logpai/loghub/master/OpenSSH/OpenSSH_2k.log
-1. Load the log into the database: python src/db.py
+1. Load the log into the database: python src/db.py. If you run it again it prints "inserted 0", because on the second run the database already has those 633 rows, so INSERT OR IGNORE skips every one of them as a duplicate.
 2. Print the report: python src/report.py
 3. Run the tests (install pytest once first with: pip install pytest): python -m pytest
 
