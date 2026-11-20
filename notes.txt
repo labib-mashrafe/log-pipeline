@@ -184,3 +184,7 @@ What I learned in Day 24
 1. db.py printed "inserted 633" on every run, because it added 1 for every row it tried, even when INSERT OR IGNORE skipped it. I changed it to add cur.rowcount, which is 1 for a real insert and 0 for a skipped row.
 2. I deleted events.db and ran db.py twice. The first run printed "inserted 633" and the second printed "inserted 0". The tests still gave 2 passed.
 3. Running db.py a second time now prints "inserted 0". That is correct, because rows are already in the database and INSERT OR IGNORE skips them.
+4. Test 3 writes 12 fake failed logins from one IP and 1 from another into a temporary log. burst_rows with threshold 10 must flag only the IP with 12 failures.
+5. At first pytest said 2 passed instead of 3, because my def line was indented 4 spaces, so the test was inside another function and pytest did not collect it.
+6. I changed the expected 12 to 13 and got 1 failed, which proves the test can find failures.
+7. I added a data-flow diagram to the README. On GitHub I checked that it shows the 6 files in order, one arrow per line.
