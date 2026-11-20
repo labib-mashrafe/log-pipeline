@@ -19,6 +19,16 @@ Run all commands from the log-pipeline folder.
 2. Print the report: python src/report.py
 3. Run the tests (install pytest once first with: pip install pytest): python -m pytest
 
+## How it works
+```
+data/OpenSSH_2k.log
+  -> src/parse.py (parses each line)
+  -> src/db.py (loads rows into SQLite)
+  -> data/events.db (the database file)
+  -> src/detect.py (runs the queries)
+  -> src/report.py (prints the report)
+```
+
 ## Known limits
 - The log has no year, so I guessed 2025 in the constant ASSUMED_YEAR at the top of src/parse.py.
 - The server timezone is unknown, so I can't compare these times with times from another server.
