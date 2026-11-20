@@ -16,7 +16,7 @@ def load(log_file, db_file):
         result = parse_line(line)
         if result is not None:
             cur.execute("INSERT OR IGNORE INTO events (source_file, line_number, ts, ip, user, event, raw) VALUES (?, ?, ?, ?, ?, ?, ?)", (source, line_number, result["ts"], result["ip"], result["user"], result["event"], result["raw"]))
-            count = count + 1
+            count = count + cur.rowcount
 
     conn.commit()
     conn.close()
