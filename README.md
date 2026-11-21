@@ -54,3 +54,6 @@ data/OpenSSH_2k.log
 - Checked by hand: 5.188.10.180 in hour 08 has 18 failed passwords with findstr, same as the query.
 - Run it with: python src/detect.py
 - Distinct usernames per IP: 187.141.143.180 tried 28 usernames about 2.86 times each, while 183.62.140.253 tried 10 usernames about 28.6 times each. Counting failures alone hides the difference between trying many usernames and repeatedly targeting a smaller set.
+
+## Week 4: what works so far
+- report.py prints the report, README steps 0 to 3 work from a fresh clone, and the project has 3 tests.
